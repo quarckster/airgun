@@ -35,6 +35,7 @@ from airgun.entities.puppet_class import PuppetClassEntity
 from airgun.entities.puppet_environment import PuppetEnvironmentEntity
 from airgun.entities.product import ProductEntity
 from airgun.entities.repository import RepositoryEntity
+from airgun.entities.rhai.plan import PlanEntity
 from airgun.entities.role import RoleEntity
 from airgun.entities.template import ProvisioningTemplateEntity
 from airgun.entities.smart_class_parameter import SmartClassParameterEntity
@@ -274,6 +275,11 @@ class Session(object):
     def jobtemplate(self):
         """Instance of Job Template entity."""
         return JobTemplateEntity(self.browser)
+
+    @cached_property
+    def insightsplan(self):
+        """Instance of RHAI Plan entity."""
+        return PlanEntity(self.browser)
 
     @cached_property
     def ldapauthentication(self):
